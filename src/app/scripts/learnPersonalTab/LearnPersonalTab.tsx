@@ -95,7 +95,34 @@ export class LearnPersonalTab extends TeamsBaseComponent<
               ></List.Item>
             ))}
           </List>
-          TODO: add new list item form here
+          {/* TODO: add new list item form here */}
+          <Flex gap="gap.medium">
+            <Flex.Item grow>
+              <Flex>
+                <Label
+                  icon="to-do-list"
+                  styles={{
+                    background: "darkgray",
+                    height: "auto",
+                    padding: "0 15px"
+                  }}
+                ></Label>
+                <Flex.Item grow>
+                  <Input
+                    placeholder="New todo item"
+                    fluid
+                    value={this.state.newTodoValue}
+                    onChange={this.handleOnChanged}
+                  ></Input>
+                </Flex.Item>
+              </Flex>
+            </Flex.Item>
+            <Button
+              content="Add Todo"
+              primary
+              onClick={this.handleOnClick}
+            ></Button>
+          </Flex>
           <Text content="(C) Copyright Tracy" size="smallest"></Text>
         </Flex>
       </Provider>
@@ -163,5 +190,24 @@ export class LearnPersonalTab extends TeamsBaseComponent<
         teamsTheme: theme
       })
     );
-  };
+  }
+  private handleOnChanged = (event): void => {
+    this.setState(
+      Object.assign({}, this.state, { newTodoValue: event.target.value })
+    );
+  }
+
+  private handleOnClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ): void => {
+    const newTodoItems = this.state.todoItems;
+    newTodoItems.push(this.state.newTodoValue);
+
+    this.setState(
+      Object.assign({}, this.state, {
+        todoItems: newTodoItems,
+        newTodoValue: ""
+      })
+    );
+  }
 }
