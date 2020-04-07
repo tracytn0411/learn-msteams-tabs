@@ -23,7 +23,20 @@
     "color": "icon-color.png"
   },
   "accentColor": "#D85028",
-  "configurableTabs": [],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{{HOSTNAME}}/configMathTab/config.html",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ],
+      "sharePointPreviewImage": "https://{{HOSTNAME}}/assets/configMathTab-preview.png",
+      "supportedSharePointHosts": [
+        "sharePointFullPage",
+        "sharePointWebPart"
+      ]
+    }
+  ],
   "staticTabs": [
     {
       "entityId": "default-data",
